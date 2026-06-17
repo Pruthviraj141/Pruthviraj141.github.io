@@ -22,6 +22,14 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: `${candidate.name} — Technical Engineer`,
   description: candidate.tagline,
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  openGraph: {
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
