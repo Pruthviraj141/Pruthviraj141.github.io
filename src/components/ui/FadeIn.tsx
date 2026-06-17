@@ -1,0 +1,22 @@
+"use client";
+import { motion } from "framer-motion";
+
+export default function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-5% 0px" }}
+      transition={{ 
+        duration: 0.8, 
+        delay: delay / 1000, 
+        type: "spring", 
+        stiffness: 50, 
+        damping: 15 
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}

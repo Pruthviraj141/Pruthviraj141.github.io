@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg: var(--base-bg);
+  --color-surface: var(--base-surface);
+  --color-border: var(--base-border);
+  --color-text-1: var(--base-text-1);
+  --color-text-2: var(--base-text-2);
+  --color-text-3: var(--base-text-3);
+  --color-accent: var(--base-accent);
+
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+
+  --animate-marquee: marquee 20s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  100% {
+    transform: translateX(-100%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :root {
+    --base-bg: #000000;
+    --base-surface: #09090b;
+    --base-border: #27272a;
+    --base-text-1: #ffffff;
+    --base-text-2: #a1a1aa;
+    --base-text-3: #52525b;
+    --base-accent: #458fff;
+  }
+
+  body {
+    background-color: var(--base-bg);
+    color: var(--base-text-2);
+    /* Strict grid background */
+    background-image: linear-gradient(var(--base-border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--base-border) 1px, transparent 1px);
+    background-size: 100px 100px;
+    background-position: center center;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--base-text-1);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  ::selection {
+    background: var(--base-accent);
+    color: #000;
+  }
 }
